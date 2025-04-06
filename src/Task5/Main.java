@@ -1,0 +1,11 @@
+package Task5;
+
+import java.util.Arrays;
+
+public class Main {
+    public static void main(String[] args) {
+        int[] arr = {1, 2, 3, 4};
+        int[] reversed = Example.reverse(arr);
+        System.out.println(Arrays.toString(reversed));
+    }
+}
