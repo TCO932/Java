@@ -1,0 +1,7 @@
+[versions]
+lombokV = "1.18.30"
+junitV = "5.11.4"
+
+[libraries]
+projectlombok = { module = "org.projectlombok:lombok", version.ref = "lombokV" }
+junit = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junitV" }
