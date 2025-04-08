@@ -12,9 +12,8 @@ public class Main {
             new User(2, "Иван", 30, Set.of("программирование", "плавание"))
         );
 
-        Set<String> targetHobbies = Set.of("плавание");
+        Set<String> targetHobbies = Set.of("плавание", "рисование");
         Map<User, String> lovers = User.findHobbyLovers(users, targetHobbies);
         System.out.println(lovers);
-
     }
 }

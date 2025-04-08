@@ -1,43 +1,35 @@
 package Task4;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NonNull;
+import lombok.ToString;
+
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 import java.util.Set;
-import java.util.TreeMap;
 
-public class User{
-    int id;
-    String name;
-    int age;
-    Set<String> hobbies;
+@Getter
+@AllArgsConstructor
+@ToString
+public class User {
+    private int id;
+    private @NonNull String name;
+    private int age;
+    private @NonNull Set<String> hobbies;
 
-    public User(int id, String name, int age, Set<String> hobbies) {
-        this.id = id;
-        this.name = name;
-        this.age = age;
-        this.hobbies = hobbies;
-    }
-
-    @Override
-    public String toString() {
-        return name;
-    }
-
-//    @Override
-//    public int compareTo(User other) {
-//        return Integer.compare(this.id, other.id);
-//    }
-
-    public static Map<User, String> findHobbyLovers(List<User> users, Set<String> targetHobbies) {
-        Map<User, String> result = new TreeMap<>();
+    public static Map<User, String> findHobbyLovers(@NonNull List<User> users, @NonNull Set<String> targetHobbies) {
+        Map<User, String> result = new HashMap<>();
 
         for (User user : users) {
-            Optional<String> commonHobby = user.hobbies.stream()
-                    .filter(targetHobbies::contains)
-                    .findFirst();
+            Set<String> commonHobby = new HashSet<>(user.hobbies);
+            commonHobby.retainAll(targetHobbies);
 
-            commonHobby.ifPresent(hobby -> result.put(user, hobby));
+            if (!commonHobby.isEmpty()) {
+                result.put(user, commonHobby.iterator().next());
+            }
         }
 
         return result;
