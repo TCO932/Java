@@ -1,19 +1,21 @@
 package Task2;
 
+import lombok.NonNull;
+
 import java.util.Set;
 
 public class User {
     private static final Set<String> VALID_JOBS = Set.of("Google", "Uber", "Amazon");
     private static final Set<String> VALID_ADDRESSES = Set.of("London", "New York", "Amsterdam");
 
-    private final String name;
-    private final Integer age;
-    private final String workplace;
-    private final String address;
+    private final @NonNull String name;
+    private final int age;
+    private final @NonNull String workplace;
+    private final @NonNull String address;
 
-    public User(String name, Integer age, String workplace, String address) throws IllegalArgumentException {
-        if (name == null || name.trim().isEmpty()) {
-            throw new IllegalArgumentException("Name cannot be null or empty");
+    public User(@NonNull String name, int age, @NonNull String workplace, @NonNull String address) throws IllegalArgumentException {
+        if (name.trim().isEmpty()) {
+            throw new IllegalArgumentException("Name cannot be empty");
         } else {
             this.name = name;
         }
