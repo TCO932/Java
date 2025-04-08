@@ -1,10 +1,11 @@
 plugins {
     java
+    id("io.freefair.lombok") version "8.6"
 }
 
 tasks.named<Jar>("jar") {
     manifest {
-        attributes["Main-Class"] = "Task1.Main"
+        attributes["Main-Class"] = "Task4.Main"
     }
 }
 
@@ -13,6 +14,7 @@ repositories {
 }
 
 dependencies {
-    implementation(libs.projectlombok)
+    compileOnly(libs.projectlombok)
+    annotationProcessor(libs.projectlombok)
     testImplementation(libs.junit)
 }
